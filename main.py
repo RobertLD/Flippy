@@ -15,16 +15,19 @@ async def on_ready():
 async def on_message(message):
     if message.author == client.user:
         return
+
+    msg = message.content
     
-    if message.content.startswith('$hello'):
+    if msg.startswith('$hello'):
         await message.channel.send('Hello World!')
     
-    if message.content.startswith('$kayah'):
+    if msg.startswith('$kayah'):
         await message.channel.send('Kayah is the best girl ever!')
     
-    if message.content.startswith('$test'):
+    if msg.startswith('$test'):
         data = latest_prices()
-        await message.channel.send(data['data']['2']['high'])
+        args = msg.split()
+        await message.channel.send(data['data'][args[1]][args[2]])
 
 
 client.run(TOKEN)
