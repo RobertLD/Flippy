@@ -4,8 +4,11 @@ from discord.ext import tasks, commands
 import pickle # Sensetive Data is pickled
 
 from osrs_wiki_api import * #OSRS python wrapper
-
+from dumpCog import *
 client = discord.Client()
+
+bot = commands.Bot(command_prefix = '!')
+
 TOKEN = pickle.load(open('.TOKEN', 'rb'))
 
 
@@ -28,12 +31,10 @@ async def on_message(message):
         data = latest_prices()
         await message.channel.send(data['data']['2']['high'])
 
-@tasks.loop(seconds=30)
-async def dumpDetector():
 
-    # The logic to detect wild price fluctuations will be placed here
-    print("tsk")
-    return
+def setup(bot, client):
+    bot.add_cog(DumpCog(bot=client))
+    client.run(TOKEN)
 
-dumpDetector.start()
-client.run(TOKEN)
+
+setup(bot, client)
