@@ -6,5 +6,5 @@ data = {}
 for val in list:
     data[str(val['name'])] = val
 
-with open('item_map.json', 'w', encoding='utf-8') as f:
+with open('item_map_name.json', 'w', encoding='utf-8') as f:
     json.dump(data, f, ensure_ascii=False, indent=4)
