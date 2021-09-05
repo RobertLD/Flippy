@@ -1,5 +1,5 @@
 from discord.ext import tasks, commands
-
+from osrs_wiki_api import * #OSRS python wrapper
 
 class DumpCog(commands.Cog):
 
@@ -10,7 +10,7 @@ class DumpCog(commands.Cog):
         # Dump Detector start
         self.detectDump.start()
 
-    @tasks.loop(seconds=1)
+    @tasks.loop(seconds=30)
     async def detectDump(self):
         print("tsk")
         return
