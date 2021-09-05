@@ -13,7 +13,7 @@ def latest_prices():
     if(response.status_code != 200):
         return 
     #return json.dumps(response.json(), sort_keys= True, indent=4)
-    return response.json()
+    return json.load(response.json())
 
 def item_map():
     URL = API_END_POINT + '/mapping'
@@ -22,7 +22,7 @@ def item_map():
     # API was not succesfully reached
     if(response.status_code != 200):
         return 
-    return response.json()
+    return json.load(response.json())
     
 def prices(minutes = 5):
 
@@ -37,7 +37,7 @@ def prices(minutes = 5):
     # API was not succesfully reached
     if(response.status_code != 200):
         return 
-    return response.json()
+    return json.load(response.json())
 
 def item_time_series(id, timestep):
 
@@ -54,4 +54,4 @@ def item_time_series(id, timestep):
     # API was not succesfully reached
     if(response.status_code != 200):
         return 
-    return response.json()
+    return json.load(response.json())
