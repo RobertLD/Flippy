@@ -1,8 +1,10 @@
-import discord
+import discord # Discord connection api
+import pickle # Sensetive Data is pickled
+
 from osrs_wiki_api import * #OSRS python wrapper
 
 client = discord.Client()
-TOKEN = 'ODgwOTExMjQxMzQ5MDM4MTQw.YSlKhg.4gkIWIqoh-3YHx0s67Dohu_7Wz4'
+TOKEN = pickle.load(open('.TOKEN', 'rb'))
 
 
 @client.event
