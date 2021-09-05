@@ -1,4 +1,6 @@
+from json import dump
 import discord # Discord connection api
+from discord.ext import tasks, commands
 import pickle # Sensetive Data is pickled
 
 from osrs_wiki_api import * #OSRS python wrapper
@@ -26,5 +28,12 @@ async def on_message(message):
         data = latest_prices()
         await message.channel.send(data['data']['2']['high'])
 
+@tasks.loop(seconds=30)
+async def dumpDetector():
 
+    # The logic to detect wild price fluctuations will be placed here
+    print("tsk")
+    return
+
+dumpDetector.start()
 client.run(TOKEN)
