@@ -42,11 +42,11 @@ def prices(minutes = 5):
 def item_time_series(id, timestep):
 
     if(timestep == 5):
-        URL = API_END_POINT + 'timeseries?timestep=5m&id=' + str(id)
+        URL = API_END_POINT + '/timeseries?timestep=5m&id=' + str(id)
     elif(timestep == 60):    
-        URL = API_END_POINT + 'timeseries?timestep=1h&id=' + str(id)
+        URL = API_END_POINT + '/timeseries?timestep=1h&id=' + str(id)
     elif(timestep == 360):    
-        URL = API_END_POINT + 'timeseries?timestep=6hm&id=' + str(id)
+        URL = API_END_POINT + '/timeseries?timestep=6hm&id=' + str(id)
     else:
         return
     response = requests.get(URL)
